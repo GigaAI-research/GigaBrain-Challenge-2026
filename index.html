@@ -163,8 +163,10 @@
                                 </div>
                             </div>
                             <div class="shrink-0 text-center">
-                                <img src="./img/RT_vx.JPEG" alt="RoboTwin Track WeChat QR Code" class="w-28 sm:w-32 h-auto rounded-lg border border-gray-100">
-                                <div class="mt-2 text-xs text-gray-500">WeChat Group</div>
+                                <a href="https://gigaai-research.github.io/GigaBrain-Challenge-2026/?wechat=rt" target="_blank" rel="noopener noreferrer" class="inline-block">
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fgigaai-research.github.io%2FGigaBrain-Challenge-2026%2F%3Fwechat%3Drt" alt="Permanent QR for RoboTwin Track WeChat group" class="w-28 sm:w-32 h-auto rounded-lg border border-gray-100 bg-white">
+                                </a>
+                                <div class="mt-2 text-xs text-gray-500">Permanent WeChat QR</div>
                             </div>
                         </div>
                         <div class="border-t border-gray-100 pt-4">
@@ -206,8 +208,10 @@
                                 </div>
                             </div>
                             <div class="shrink-0 text-center">
-                                <img src="./img/WM_vx.JPEG" alt="World Model Track WeChat QR Code" class="w-28 sm:w-32 h-auto rounded-lg border border-gray-100">
-                                <div class="mt-2 text-xs text-gray-500">WeChat Group</div>
+                                <a href="https://gigaai-research.github.io/GigaBrain-Challenge-2026/?wechat=wm" target="_blank" rel="noopener noreferrer" class="inline-block">
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fgigaai-research.github.io%2FGigaBrain-Challenge-2026%2F%3Fwechat%3Dwm" alt="Permanent QR for World Model Track WeChat group" class="w-28 sm:w-32 h-auto rounded-lg border border-gray-100 bg-white">
+                                </a>
+                                <div class="mt-2 text-xs text-gray-500">Permanent WeChat QR</div>
                             </div>
                         </div>
                         <div class="border-t border-gray-100 pt-4">
@@ -249,8 +253,10 @@
                                 </div>
                             </div>
                             <div class="shrink-0 text-center">
-                                <img src="./img/RC_vx.JPG" alt="RoboChallenge Track WeChat QR Code" class="w-28 sm:w-32 h-auto rounded-lg border border-gray-100">
-                                <div class="mt-2 text-xs text-gray-500">WeChat Group</div>
+                                <a href="https://gigaai-research.github.io/GigaBrain-Challenge-2026/?wechat=rc" target="_blank" rel="noopener noreferrer" class="inline-block">
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https%3A%2F%2Fgigaai-research.github.io%2FGigaBrain-Challenge-2026%2F%3Fwechat%3Drc" alt="Permanent QR for RoboChallenge Track WeChat group" class="w-28 sm:w-32 h-auto rounded-lg border border-gray-100 bg-white">
+                                </a>
+                                <div class="mt-2 text-xs text-gray-500">Permanent WeChat QR</div>
                             </div>
                         </div>
                         <div class="border-t border-gray-100 pt-4">
@@ -260,8 +266,77 @@
                     </div>
                 </div>
             </div>
+            <p class="mt-8 text-center text-gray-600">
+                If the WeChat QR code expires, please email <a href="mailto:jeffwang@mail.tsinghua.edu" class="text-blue-600 hover:text-blue-700 underline">jeffwang@mail.tsinghua.edu</a> to request access to the WeChat group.
+            </p>
         </div>
     </section>
+
+    <div id="wechat-landing" class="fixed inset-0 z-50 hidden">
+        <div id="wechat-landing-backdrop" class="absolute inset-0 bg-black/50"></div>
+        <div class="relative mx-auto mt-20 w-[min(92vw,28rem)] rounded-2xl bg-white p-6 shadow-xl">
+            <div class="flex items-start justify-between gap-4">
+                <div>
+                    <div class="text-sm font-semibold text-gray-500">WeChat Group</div>
+                    <div id="wechat-landing-title" class="text-xl font-bold text-gray-900">Join</div>
+                </div>
+                <button id="wechat-landing-close" type="button" class="rounded-lg px-2 py-1 text-gray-500 hover:text-gray-700">✕</button>
+            </div>
+            <div class="mt-4 text-sm text-gray-600">
+                Please scan the QR code below in WeChat to join the group.
+            </div>
+            <div class="mt-6 flex justify-center">
+                <img id="wechat-landing-img" src="" alt="WeChat Group QR Code" class="w-56 h-56 rounded-xl border border-gray-100 object-contain bg-white">
+            </div>
+            <div class="mt-4 flex items-center justify-center">
+                <a id="wechat-landing-open" href="#" target="_blank" rel="noopener noreferrer" class="text-sm font-semibold text-blue-600 hover:text-blue-700 underline">Open QR image</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const group = (params.get('wechat') || '').toLowerCase();
+            const groupMap = {
+                rt: { title: 'RoboTwin Track', img: './img/RT_vx.JPEG' },
+                wm: { title: 'World Model Track', img: './img/WM_vx.JPEG' },
+                rc: { title: 'RoboChallenge Track', img: './img/RC_vx.JPG' }
+            };
+            const selected = groupMap[group];
+            if (!selected) return;
+
+            const modal = document.getElementById('wechat-landing');
+            const titleEl = document.getElementById('wechat-landing-title');
+            const imgEl = document.getElementById('wechat-landing-img');
+            const openEl = document.getElementById('wechat-landing-open');
+            const closeBtn = document.getElementById('wechat-landing-close');
+            const backdrop = document.getElementById('wechat-landing-backdrop');
+
+            const close = () => {
+                modal?.classList.add('hidden');
+                try {
+                    const nextUrl = new URL(window.location.href);
+                    nextUrl.searchParams.delete('wechat');
+                    window.history.replaceState({}, '', nextUrl.toString());
+                } catch {}
+            };
+
+            if (titleEl) titleEl.textContent = selected.title;
+            if (imgEl) {
+                const cacheBusted = `${selected.img}?v=${Date.now()}`;
+                imgEl.src = cacheBusted;
+                if (openEl) openEl.setAttribute('href', cacheBusted);
+            }
+            modal?.classList.remove('hidden');
+
+            closeBtn?.addEventListener('click', close);
+            backdrop?.addEventListener('click', close);
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') close();
+            });
+        });
+    </script>
 
     <!-- Timeline -->
     <section id="schedule" class="py-16 bg-white">
