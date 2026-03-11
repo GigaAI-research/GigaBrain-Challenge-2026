@@ -6,15 +6,392 @@
   <title>RoboTwin Track Guide | GigaBrain Challenge 2026</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>body { font-family: 'Inter', sans-serif; }</style>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .lang-zh { display: none; }
+  </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
-  <header class="bg-white border-b border-gray-100">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-      <a href="../index.html#tracks" class="text-sm font-semibold text-gray-600 hover:text-gray-900">← Back to Tracks</a>
-      <h1 class="mt-2 text-3xl font-bold tracking-tight">RoboTwin Track Guide</h1>
-      <p class="mt-2 text-gray-600">TBD</p>
+<body class="bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900">
+  <header class="bg-white/70 backdrop-blur border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <a href="../index.html#tracks" class="text-sm font-semibold text-gray-600 hover:text-gray-900">← Back to Tracks</a>
+          <h1 class="mt-2 text-3xl font-bold tracking-tight">
+            <span class="lang-en">RoboTwin Track Guide</span>
+            <span class="lang-zh">RoboTwin 赛道指南</span>
+          </h1>
+          <p class="mt-2 text-gray-600">
+            <span class="lang-en">Evaluate Your Policy or VLA on RoboTwin Benchmark.</span>
+            <span class="lang-zh">评测你的 policy 或 VLA 在 RoboTwin 基准测试上的性能。</span>
+          </p>
+        </div>
+        <div class="shrink-0 flex items-center gap-2">
+          <button id="btn-en" type="button" class="rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-gray-900 text-white">EN</button>
+          <button id="btn-zh" type="button" class="rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-white text-gray-700 hover:bg-gray-50">中文</button>
+        </div>
+      </div>
     </div>
   </header>
+
+  <main class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 -top-24 -z-10 h-72 bg-gradient-to-r from-blue-200/40 via-indigo-200/30 to-cyan-200/40 blur-3xl"></div>
+    <section class="bg-white/80 backdrop-blur rounded-2xl border border-gray-100 shadow-[0_18px_60px_rgba(15,23,42,0.06)] p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-gray-900">
+        <span class="lang-en">Overview</span>
+        <span class="lang-zh">总体介绍</span>
+      </h2>
+      <div class="mt-4 text-gray-700 leading-relaxed space-y-3">
+        <p class="lang-en">
+          This track hosts a competition to evaluate the capability of your policy or VLA on the RoboTwin Benchmark. Participants train a model on the provided training set in RoboTwin2.0 Huggingface platform, generate videos when evaluating, and submit generated videos to Huggingface. We evaluate submissions and publish scores and rankings on the leaderboard. Note that the scores obtained in simulation may not be the final scores.
+        </p>
+        <p class="lang-zh">
+          本赛道核心目标是评测你的policy或VLA在RoboTwin基准测试上的性能”。参赛队伍需要在RoboTwin2.0基准和huggingface平台给定的数据集上上训练policy或VLA，并在评估时生成视频，并将生成结果提交至Huggingface。我们会在本地完成评测并更新leaderboard的分数与排名，需要注意的是，仿真中得到的评测分数并不完全会是最后的评测分数。
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-white/80 backdrop-blur rounded-2xl border border-gray-100 shadow-[0_18px_60px_rgba(15,23,42,0.06)] p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-gray-900">
+        <span class="lang-en">Step-by-step Guidance</span>
+        <span class="lang-zh">参赛步骤</span>
+      </h2>
+      <div class="mt-4 grid gap-6">
+        <div class="rounded-xl border border-gray-100 bg-gray-50 p-5">
+          <h3 class="text-lg font-bold">
+            <span class="lang-en">Step 1. Get the dataset</span>
+            <span class="lang-zh">步骤 1：获取数据</span>
+          </h3>
+          <div class="mt-3 text-gray-700 leading-relaxed space-y-3">
+            <p class="text-gray-600">
+              <span class="lang-en">Dataset: </span><span class="lang-zh">数据集链接：</span>
+              <a href="https://huggingface.co/datasets/TianxingChen/RoboTwin2.0/tree/main" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 hover:text-blue-700 underline">open-gigaai/CVPR2026_RoboTwin_Track</a>
+            </p>
+            <div class="grid gap-6 sm:grid-cols-2">
+              <div class="rounded-xl border border-gray-100 bg-white p-5">
+                <div class="font-bold">
+                  <span class="lang-en">Training Set</span>
+                  <span class="lang-zh">训练数据</span>
+                </div>
+                <ul class="mt-3 list-disc pl-5 space-y-2">
+                  <li class="lang-en">10 robot manipulation tasks in total.</li>
+                  <li class="lang-en">Each task is generated by the RoboTwin2.0 simulator and collected 50 clean demos and 500 cluttered demos.</li>
+                  <li class="lang-zh">共 10 种机器人操作任务。</li>
+                  <li class="lang-zh">每种任务是由 RoboTwin2.0 仿真器生成，并收集了 50 条干净环境的数据和 500 条杂乱环境的数据。</li>
+                </ul>
+              </div>
+              <div class="rounded-xl border border-gray-100 bg-white p-5">
+                <div class="font-bold">
+                  <span class="lang-en">Test Bench</span>
+                  <span class="lang-zh">测试基准</span>
+                </div>
+                <ul class="mt-3 list-disc pl-5 space-y-2">
+                  <li class="lang-en">The test bench is the RoboTwin2.0 simulator. You can follow the instructions in the <a href="https://robotwin-platform.github.io/doc/usage/robotwin-install.html" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 hover:text-blue-700 underline">official website</a> to establish your own RoboTwin Environment for both training and evaluating.</li>
+                  <li class="lang-zh">测试基准是 RoboTwin2.0 仿真器。你可以参考 <a href="https://robotwin-platform.github.io/doc/usage/robotwin-install.html" target="_blank" rel="noopener noreferrer" class="font-semibold text-blue-600 hover:text-blue-700 underline">官方网站</a> 的安装指南，建立自己的 RoboTwin 环境，用于训练和评估。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="rounded-xl border border-gray-100 bg-white p-5">
+              <div class="font-bold">
+                <span class="lang-en">The Task We Will Evaluate</span>
+                <span class="lang-zh">我们将评估的任务</span>
+              </div>
+              <ul class="mt-3 list-disc pl-5 space-y-2">
+                <li class="lang-en">Among the 50 tasks we curate 10 tasks for evaluation. We will evaluate the performance of your policy or VLA on the following 10 tasks: hugging_mug, move_stapler_pad, place_fan, handover_mic, open_microwave, place_can_basket, place_dual_shoes, stack_blocks_three, move_can_pot, blocks_ranking_rgb, block_ranking_size, so you can choose to download your dataset selectively, and the robot body is unified as the agilex-aloha robot body, so pay attention to filtering when downloading.</li>
+                <li class="lang-zh">我们在收集的 50 个任务中选择了 10 个任务进行评估。我们将评估你的 policy 或 VLA 在以下 10 个任务上的性能：hugging_mug, move_stapler_pad, place_fan, handover_mic, open_microwave, place_can_basket, place_dual_shoes, stack_blocks_three, move_can_pot, blocks_ranking_rgb, block_ranking_size，所以在下载的时候也可以选择性下载你的数据集，另外我们的本体统一使用agilex-aloha机器人本体，所以注意下载时进行筛选。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-gray-100 bg-gray-50 p-5">
+          <h3 class="text-lg font-bold">
+            <span class="lang-en">Step 2. Training & evaluation</span>
+            <span class="lang-zh">步骤 2：训练与评测</span>
+          </h3>
+          <div class="mt-3 text-gray-700 leading-relaxed space-y-4">
+            <p class="lang-en">
+              You can follow the documentation for your policy training, but you should be aware that your policy should not surpass 2B, or the results will not be valid.
+            </p>
+            <p class="lang-zh">
+              你可以根据官方文档来训练你的policy，但是你必须要注意，policy的权重大小不能超过2B，否则结果无效！
+            </p>
+            <div class="rounded-xl border border-gray-100 bg-white p-5">
+              <div class="font-bold">
+                <span class="lang-en">Evaluation Metrics</span>
+                <span class="lang-zh">评估指标</span>
+              </div>
+              <div class="mt-3 grid gap-6">
+                <div class="rounded-xl border border-gray-100 bg-gray-50 p-5">
+                  <div class="font-bold">
+                    <span class="lang-en">Progress-Aware Success Rate</span>
+                    <span class="lang-zh">基于任务完成进度的成功率</span>
+                  </div>
+                  <div class="mt-2 space-y-2">
+                    <p class="lang-en">
+                      We will compute progress-aware success rate for long-horizon tasks(e.g. stack_blocks_three) and compute direct success rate for straight-forward tasks(e.g. place fan)
+                    </p>
+                    <p class="lang-zh">
+                      我们会基于完成的进度计算长程任务的成功率（比如基于任务中间的成功节点进行分段式给分），并且直接计算简单任务的成功率。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-gray-100 bg-gray-50 p-5">
+          <h3 class="text-lg font-bold">
+            <span class="lang-en">Step 3. Submission & leaderboard</span>
+            <span class="lang-zh">步骤 3：提交与榜单</span>
+          </h3>
+          <div class="mt-4 rounded-2xl border border-gray-100 bg-white p-5 sm:p-6 shadow-sm">
+            <div class="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+              <div class="min-w-0">
+                <div class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 px-3 py-1 text-xs font-semibold text-blue-700 ring-1 ring-inset ring-blue-100">
+                  <span class="lang-en">Submission</span>
+                  <span class="lang-zh">提交</span>
+                  <span class="text-blue-300">•</span>
+                  <span class="lang-en">Leaderboard</span>
+                  <span class="lang-zh">榜单</span>
+                </div>
+                <div class="mt-3 space-y-3 text-gray-700 leading-relaxed">
+                  <p class="lang-en">
+                    Submit your generated videos for the test set via Hugging Face. We will evaluate submissions and update the leaderboard in three rounds.
+                  </p>
+                  <p class="lang-zh">
+                    参赛者仅通过 Hugging Face 提交 test set 的生成视频。我们会组织评测，并在三个 round 中更新 leaderboard。
+                  </p>
+                  <div class="rounded-xl border border-gray-100 bg-gray-50 p-4">
+                    <div class="text-sm font-semibold text-gray-800">
+                      <span class="lang-en">Policy</span>
+                      <span class="lang-zh">规则说明</span>
+                    </div>
+                    <ul class="mt-2 list-disc pl-5 space-y-1 text-sm text-gray-600">
+                      <li class="lang-en">To reduce the risk of test-set hacking/overfitting, we provide 3 evaluation rounds.</li>
+                      <li class="lang-en">Only your best score across all rounds will be kept as the final score.</li>
+                      <li class="lang-zh">为降低 test set 被 hack/过拟合的风险，我们提供 3 次评测机会（3 个 round）。</li>
+                      <li class="lang-zh">最终成绩仅保留你在所有 round 中的最高分。</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="shrink-0 w-full sm:w-72">
+                <div class="rounded-2xl border border-gray-100 bg-gradient-to-br from-gray-900 to-gray-800 p-[1px] shadow-sm">
+                  <div class="rounded-2xl bg-white p-4">
+                    <div class="flex items-start justify-between gap-3">
+                      <div class="min-w-0">
+                        <div class="text-sm font-semibold text-gray-900">
+                          <span class="lang-en">Leaderboard</span>
+                          <span class="lang-zh">榜单</span>
+                        </div>
+                        <div class="mt-1 text-xs text-gray-600">
+                          <span class="lang-en">Hosted on Hugging Face • open-gigaai</span>
+                          <span class="lang-zh">托管于 Hugging Face • open-gigaai</span>
+                        </div>
+                      </div>
+                      <div class="shrink-0 inline-flex items-center rounded-full bg-gray-50 px-2.5 py-1 text-[11px] font-semibold text-gray-700 ring-1 ring-inset ring-gray-200">
+                        <span class="lang-en">3 rounds</span>
+                        <span class="lang-zh">3 轮</span>
+                      </div>
+                    </div>
+                    <ul class="mt-3 space-y-2 text-sm text-gray-700">
+                      <li class="flex gap-2">
+                        <span class="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600"></span>
+                        <span class="lang-en">Submit videos and track ranking updates.</span>
+                        <span class="lang-zh">提交视频并跟踪榜单更新。</span>
+                      </li>
+                      <li class="flex gap-2">
+                        <span class="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-blue-600"></span>
+                        <span class="lang-en">Final score keeps your best round.</span>
+                        <span class="lang-zh">最终成绩取三轮最高分。</span>
+                      </li>
+                    </ul>
+                    <a href="https://huggingface.co/spaces/open-gigaai/CVPR-2026-RoboTwin-Track-LeaderBoard" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-gray-800">
+                      <span class="lang-en">Open leaderboard</span>
+                      <span class="lang-zh">打开榜单</span>
+                      <svg class="h-4 w-4 opacity-90" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M9 5h10v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M19 5 10 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M5 9v10h10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-white to-blue-50 p-5">
+              <div class="flex items-center justify-between gap-3">
+                <div class="font-bold text-gray-900">
+                  <span class="lang-en">Schedule & countdown (UTC)</span>
+                  <span class="lang-zh">时间安排与倒计时（UTC）</span>
+                </div>
+                <div class="text-xs font-semibold text-gray-600 ring-1 ring-inset ring-gray-200 rounded-full px-2.5 py-1 bg-white">
+                  <span class="lang-en">UTC</span>
+                  <span class="lang-zh">UTC</span>
+                </div>
+              </div>
+              <p class="mt-2 text-sm text-gray-600">
+                <span class="lang-en">All timestamps below are in UTC.</span>
+                <span class="lang-zh">以下时间均为 UTC（全球统一时区）。</span>
+              </p>
+              <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <div id="r1-card" class="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="text-sm font-semibold text-gray-900">
+                      <span class="lang-en">Round 1 update</span>
+                      <span class="lang-zh">第一次更新</span>
+                    </div>
+                    <span class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ring-1 ring-inset ring-gray-200 bg-gray-50 text-gray-600">
+                      <span id="r1-status-en" class="lang-en">—</span>
+                      <span id="r1-status-zh" class="lang-zh">—</span>
+                    </span>
+                  </div>
+                  <div class="mt-2 text-sm text-gray-600" id="r1-time">—</div>
+                  <div class="mt-3 text-3xl font-bold tracking-tight text-gray-900" id="r1-countdown">—</div>
+                  <div class="mt-3 text-sm text-gray-600">
+                    <span class="lang-en">Includes submissions before Mar 31, 11:00 UTC.</span>
+                    <span class="lang-zh">更新 3 月 31 日 11:00（UTC）之前提交的结果。</span>
+                  </div>
+                </div>
+                <div id="r2-card" class="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="text-sm font-semibold text-gray-900">
+                      <span class="lang-en">Round 2 update</span>
+                      <span class="lang-zh">第二次更新</span>
+                    </div>
+                    <span class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ring-1 ring-inset ring-gray-200 bg-gray-50 text-gray-600">
+                      <span id="r2-status-en" class="lang-en">—</span>
+                      <span id="r2-status-zh" class="lang-zh">—</span>
+                    </span>
+                  </div>
+                  <div class="mt-2 text-sm text-gray-600" id="r2-time">—</div>
+                  <div class="mt-3 text-3xl font-bold tracking-tight text-gray-900" id="r2-countdown">—</div>
+                  <div class="mt-3 text-sm text-gray-600">
+                    <span class="lang-en">Includes submissions from Mar 31, 11:00 to Apr 7, 11:00 UTC.</span>
+                    <span class="lang-zh">更新 3 月 31 日 11:00 ～ 4 月 7 日 11:00（UTC）提交的结果。</span>
+                  </div>
+                </div>
+                <div id="r3-card" class="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="text-sm font-semibold text-gray-900">
+                      <span class="lang-en">Round 3 update</span>
+                      <span class="lang-zh">第三次更新</span>
+                    </div>
+                    <span class="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ring-1 ring-inset ring-gray-200 bg-gray-50 text-gray-600">
+                      <span id="r3-status-en" class="lang-en">—</span>
+                      <span id="r3-status-zh" class="lang-zh">—</span>
+                    </span>
+                  </div>
+                  <div class="mt-2 text-sm text-gray-600" id="r3-time">—</div>
+                  <div class="mt-3 text-3xl font-bold tracking-tight text-gray-900" id="r3-countdown">—</div>
+                  <div class="mt-3 text-sm text-gray-600">
+                    <span class="lang-en">Includes submissions from Apr 7, 11:00 to Apr 14, 11:00 UTC.</span>
+                    <span class="lang-zh">更新 4 月 7 日 11:00 ～ 4 月 14 日 11:00（UTC）提交的结果。</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const displayForElement = (el) => {
+      const tag = (el?.tagName || '').toUpperCase();
+      if (tag === 'SPAN' || tag === 'A' || tag === 'B' || tag === 'STRONG' || tag === 'EM' || tag === 'I') return 'inline';
+      if (tag === 'LI') return 'list-item';
+      return 'block';
+    };
+
+    const setLang = (lang) => {
+      const zh = document.querySelectorAll('.lang-zh');
+      const en = document.querySelectorAll('.lang-en');
+      const showZh = lang === 'zh';
+      for (const el of zh) el.style.display = showZh ? displayForElement(el) : 'none';
+      for (const el of en) el.style.display = showZh ? 'none' : '';
+      const btnEn = document.getElementById('btn-en');
+      const btnZh = document.getElementById('btn-zh');
+      if (btnEn && btnZh) {
+        if (showZh) {
+          btnZh.className = 'rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-gray-900 text-white';
+          btnEn.className = 'rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-white text-gray-700 hover:bg-gray-50';
+        } else {
+          btnEn.className = 'rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-gray-900 text-white';
+          btnZh.className = 'rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-white text-gray-700 hover:bg-gray-50';
+        }
+      }
+      try { localStorage.setItem('gb_lang', lang); } catch {}
+    };
+
+    const pad2 = (n) => String(n).padStart(2, '0');
+
+    const formatUtc = (ms) => {
+      const d = new Date(ms);
+      return d.getUTCFullYear() + '-' + pad2(d.getUTCMonth() + 1) + '-' + pad2(d.getUTCDate()) + ' ' + pad2(d.getUTCHours()) + ':' + pad2(d.getUTCMinutes()) + ' UTC';
+    };
+
+    const formatCountdown = (ms) => {
+      const total = Math.max(0, Math.floor(ms / 1000));
+      const days = Math.floor(total / 86400);
+      const hours = Math.floor((total % 86400) / 3600);
+      const minutes = Math.floor((total % 3600) / 60);
+      const seconds = total % 60;
+      const dayPart = days > 0 ? days + 'd ' : '';
+      return dayPart + pad2(hours) + ':' + pad2(minutes) + ':' + pad2(seconds);
+    };
+
+    const initCountdown = () => {
+      const rounds = [
+        { round: 1, time_id: 'r1-time', countdown_id: 'r1-countdown', card_id: 'r1-card', status_en_id: 'r1-status-en', status_zh_id: 'r1-status-zh', update_ms: Date.UTC(2026, 3, 1, 11, 0, 0) },
+        { round: 2, time_id: 'r2-time', countdown_id: 'r2-countdown', card_id: 'r2-card', status_en_id: 'r2-status-en', status_zh_id: 'r2-status-zh', update_ms: Date.UTC(2026, 3, 8, 11, 0, 0) },
+        { round: 3, time_id: 'r3-time', countdown_id: 'r3-countdown', card_id: 'r3-card', status_en_id: 'r3-status-en', status_zh_id: 'r3-status-zh', update_ms: Date.UTC(2026, 3, 15, 11, 0, 0) }
+      ];
+
+      const nodes = rounds.map((r) => ({
+        time: document.getElementById(r.time_id),
+        countdown: document.getElementById(r.countdown_id),
+        card: document.getElementById(r.card_id),
+        status_en: document.getElementById(r.status_en_id),
+        status_zh: document.getElementById(r.status_zh_id),
+        update_ms: r.update_ms
+      }));
+
+      if (nodes.some((n) => !n.time || !n.countdown || !n.card || !n.status_en || !n.status_zh)) return;
+
+      nodes.forEach((n) => {
+        n.time.textContent = formatUtc(n.update_ms);
+      });
+
+      const tick = () => {
+        const now = Date.now();
+        nodes.forEach((n) => {
+          const remain = n.update_ms - now;
+          n.countdown.textContent = formatCountdown(remain);
+          const done = remain <= 0;
+          n.status_en.textContent = done ? 'Completed' : 'Upcoming';
+          n.status_zh.textContent = done ? '已结束' : '即将更新';
+          if (done) n.card.classList.add('opacity-60');
+          else n.card.classList.remove('opacity-60');
+        });
+      };
+
+      tick();
+      window.setInterval(tick, 1000);
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = (() => { try { return localStorage.getItem('gb_lang'); } catch { return null; } })();
+      setLang(saved === 'zh' ? 'zh' : 'en');
+      document.getElementById('btn-en')?.addEventListener('click', () => setLang('en'));
+      document.getElementById('btn-zh')?.addEventListener('click', () => setLang('zh'));
+      initCountdown();
+    });
+  </script>
 </body>
+
 </html>
