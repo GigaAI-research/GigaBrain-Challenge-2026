@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhysClaw* Track Guide | GigaBrain Challenge 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .lang-zh { display: none; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900">
+  <header class="bg-white/70 backdrop-blur border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <a href="../index.html#tracks" class="text-sm font-semibold text-gray-600 hover:text-gray-900">← Back to Tracks</a>
+          <h1 class="mt-2 text-3xl font-bold tracking-tight">
+            <span class="lang-en">PhysClaw* Track Guide</span>
+            <span class="lang-zh">PhysClaw* 赛道指南</span>
+          </h1>
+          <p class="mt-2 text-gray-600">
+            <span class="lang-en">Special Track: Collect creative ways to use OpenClaw on embodied agents.</span>
+            <span class="lang-zh">特别赛道：征集将 OpenClaw 用在具身智能体上的任何创意方式。</span>
+          </p>
+        </div>
+        <div class="shrink-0 flex items-center gap-2">
+          <button id="btn-en" type="button" class="rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-gray-900 text-white">EN</button>
+          <button id="btn-zh" type="button" class="rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-white text-gray-700 hover:bg-gray-50">中文</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 -top-24 -z-10 h-72 bg-gradient-to-r from-orange-200/40 via-amber-200/30 to-yellow-200/40 blur-3xl"></div>
+    <section class="bg-white/80 backdrop-blur rounded-2xl border border-gray-100 shadow-[0_18px_60px_rgba(15,23,42,0.06)] p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-gray-900">
+        <span class="lang-en">Overview</span>
+        <span class="lang-zh">总体介绍</span>
+      </h2>
+      <div class="mt-4 text-gray-700 leading-relaxed space-y-3">
+        <p class="lang-en">
+          This is a special track. We are collecting any creative ways to use OpenClaw on embodied agents. You can submit demo videos, code projects, etc. Finally, we will rank submissions based on your creativity.
+        </p>
+        <p class="lang-zh">
+          该 track 为 special track，我们征集大家任何创意的将 OpenClaw 用在具身上的方式。你可以提交 demo 视频，提交代码项目等等，最终我们会根据你的创意排出名次。
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-white/80 backdrop-blur rounded-2xl border border-gray-100 shadow-[0_18px_60px_rgba(15,23,42,0.06)] p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-gray-900">
+        <span class="lang-en">How to Participate</span>
+        <span class="lang-zh">参赛方式</span>
+      </h2>
+      <div class="mt-4 grid gap-6">
+        <div class="rounded-xl border border-gray-100 bg-gray-50 p-5">
+          <h3 class="text-lg font-bold">
+            <span class="lang-en">Submission Instructions</span>
+            <span class="lang-zh">提交指南</span>
+          </h3>
+          <div class="mt-3 text-gray-700 leading-relaxed space-y-3">
+            <p class="lang-en">
+              Send your creative work (mp4 or code or others) + corresponding explanation report/document to our email, and indicate your team info.
+            </p>
+            <p class="lang-zh">
+              将你的创意（mp4 或 code 或其他形式）+ 对应的说明报告/文档，发送到指定邮箱，并注明你的队伍信息。
+            </p>
+            <div class="rounded-xl border border-gray-100 bg-white p-5 mt-4">
+              <ul class="mt-2 list-disc pl-5 space-y-2">
+                <li>
+                  <span class="font-bold text-gray-900 lang-en">Email: </span>
+                  <span class="font-bold text-gray-900 lang-zh">邮箱：</span>
+                  <a href="mailto:gigabrainchallenge@163.com" class="text-orange-600 hover:text-orange-700 underline font-medium">gigabrainchallenge@163.com</a>
+                </li>
+                <li>
+                  <span class="font-bold text-gray-900 lang-en">Required Information: </span>
+                  <span class="font-bold text-gray-900 lang-zh">必需信息：</span>
+                  <span class="lang-en">Team participants, Institution, Contact Email</span>
+                  <span class="lang-zh">参赛选手、单位、联系邮箱</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-gray-100 bg-gray-50 p-5">
+          <h3 class="text-lg font-bold">
+            <span class="lang-en">Resources</span>
+            <span class="lang-zh">相关资源</span>
+          </h3>
+          <div class="mt-3 text-gray-700 leading-relaxed space-y-4">
+            <div class="rounded-xl border border-gray-100 bg-white p-5">
+              <a href="https://gigaai-research.github.io/PhysClaw/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-gray-800 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-900">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                </svg>
+                <span>PhysClaw* GitHub Repository</span>
+              </a>
+              <p class="mt-3 text-sm text-gray-600">
+                <span class="lang-en">Learn more about the Physical Continual Learning Agent Workflow and get started with your creative projects.</span>
+                <span class="lang-zh">了解更多关于 PhysClaw（Physical Continual Learning Agent Workflow）的信息，并开始你的创意项目。</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const displayForElement = (el) => {
+      const tag = (el?.tagName || '').toUpperCase();
+      if (tag === 'SPAN' || tag === 'A' || tag === 'B' || tag === 'STRONG' || tag === 'EM' || tag === 'I') return 'inline';
+      if (tag === 'LI') return 'list-item';
+      return 'block';
+    };
+
+    const setLang = (lang) => {
+      const zh = document.querySelectorAll('.lang-zh');
+      const en = document.querySelectorAll('.lang-en');
+      const showZh = lang === 'zh';
+      for (const el of zh) el.style.display = showZh ? displayForElement(el) : 'none';
+      for (const el of en) el.style.display = showZh ? 'none' : '';
+      const btnEn = document.getElementById('btn-en');
+      const btnZh = document.getElementById('btn-zh');
+      if (btnEn && btnZh) {
+        if (showZh) {
+          btnZh.className = 'rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-gray-900 text-white';
+          btnEn.className = 'rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-white text-gray-700 hover:bg-gray-50';
+        } else {
+          btnEn.className = 'rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-gray-900 text-white';
+          btnZh.className = 'rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-white text-gray-700 hover:bg-gray-50';
+        }
+      }
+      try { localStorage.setItem('gb_lang', lang); } catch {}
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = (() => { try { return localStorage.getItem('gb_lang'); } catch { return null; } })();
+      setLang(saved === 'zh' ? 'zh' : 'en');
+      document.getElementById('btn-en')?.addEventListener('click', () => setLang('en'));
+      document.getElementById('btn-zh')?.addEventListener('click', () => setLang('zh'));
+    });
+  </script>
+</body>
+</html>
