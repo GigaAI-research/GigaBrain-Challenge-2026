@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluation Criteria | World Model Track | GigaBrain Challenge 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .lang-zh { display: none; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-gray-50 via-white to-gray-50 text-gray-900">
+  <header class="bg-white/70 backdrop-blur border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <a href="world-model.html" class="text-sm font-semibold text-gray-600 hover:text-gray-900">← <span class="lang-en">Back to World Model Guide</span><span class="lang-zh">返回 World Model 赛道指南</span></a>
+          <h1 class="mt-2 text-3xl font-bold tracking-tight">
+            <span class="lang-en">World Model as Evaluator — Scoring Criteria</span>
+            <span class="lang-zh">World Model as Evaluator — 评分细则</span>
+          </h1>
+          <p class="mt-2 text-gray-600">
+            <span class="lang-en">Human evaluation protocol for WM-as-VLA-evaluator submissions (0–3 per video).</span>
+            <span class="lang-zh">世界模型作为 VLA 评测器能力的人工评测说明（每条视频 0～3 分）。</span>
+          </p>
+        </div>
+        <div class="shrink-0 flex items-center gap-2">
+          <button id="btn-en" type="button" class="rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-gray-900 text-white">EN</button>
+          <button id="btn-zh" type="button" class="rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-white text-gray-700 hover:bg-gray-50">中文</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 -top-24 -z-10 h-72 bg-gradient-to-r from-blue-200/40 via-indigo-200/30 to-cyan-200/40 blur-3xl"></div>
+
+    <section class="bg-white/80 backdrop-blur rounded-2xl border border-gray-100 shadow-[0_18px_60px_rgba(15,23,42,0.06)] p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-gray-900">
+        <span class="lang-en">Evaluation method</span>
+        <span class="lang-zh">评估方法</span>
+      </h2>
+      <div class="mt-4 text-gray-700 leading-relaxed space-y-3">
+        <p class="lang-en">
+          Annotators watch videos and use the <strong>reference (ground-truth) video</strong> as the baseline. They judge whether the <strong>generated video</strong> is consistent with the reference in terms of outcome: both should represent success, or both should represent failure.
+        </p>
+        <p class="lang-zh">
+          评测时播放视频，以<strong>参考视频（GT）</strong>为基准，判断<strong>生成视频</strong>与参考视频在结果意义上是否一致（是否都为成功或都为失败）。
+        </p>
+        <p class="lang-en">
+          Each evaluated clip receives a score from <strong>0 to 3</strong>. Detailed criteria are below. Reference videos for each task are provided in the official dataset.
+        </p>
+        <p class="lang-zh">
+          每条待评视频记 <strong>0～3</strong> 分，评分细节见下文。各 Task 的参考视频随官方数据集提供。
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-white/80 backdrop-blur rounded-2xl border border-gray-100 shadow-[0_18px_60px_rgba(15,23,42,0.06)] p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-gray-900">
+        <span class="lang-en">Aggregation &amp; final score</span>
+        <span class="lang-zh">汇总与最终分数</span>
+      </h2>
+      <div class="mt-4 text-gray-700 leading-relaxed space-y-3">
+        <ul class="list-disc pl-5 space-y-2">
+          <li class="lang-en">For each team and each task, scores are collected from <strong>three annotators</strong>. Each annotator may be assigned up to <strong>10 videos</strong>.</li>
+          <li class="lang-zh">每个队伍的每个 task 由 <strong>3 名采集员</strong>评测；每名采集员最多分配 <strong>10 条</strong>视频。</li>
+          <li class="lang-en">Per-task score is a weighted average over all scored videos in that task: <span class="font-mono text-sm bg-gray-100 px-1 rounded">(3×N₃ + 2×N₂ + 1×N₁) / N_total</span>, where <span class="font-mono text-sm">N_k</span> is the count of videos scored <span class="font-mono text-sm">k</span>, and <span class="font-mono text-sm">N_total</span> is the total number of videos. If a submission contains fewer videos than GT, the denominator follows the <strong>total number of videos in GT</strong> for that task.</li>
+          <li class="lang-zh">按每个 task 内所有已评视频计算加权平均分：<span class="font-mono text-sm bg-gray-100 px-1 rounded">（3×3 分视频数 + 2×2 分视频数 + 1×1 分视频数）/ 总视频数</span>。若提交视频数量不足，以该 task 在 <strong>GT 中的总视频数</strong>为分母。</li>
+          <li class="lang-en">The team’s <strong>final score</strong> is the average of the per-task scores across the <strong>8 tasks</strong>.</li>
+          <li class="lang-zh">将 <strong>8 个 task</strong> 的平均分作为该队的<strong>最终分数</strong>。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="bg-white/80 backdrop-blur rounded-2xl border border-gray-100 shadow-[0_18px_60px_rgba(15,23,42,0.06)] p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-gray-900">
+        <span class="lang-en">Score definitions &amp; reference examples</span>
+        <span class="lang-zh">分数含义与参考示例</span>
+      </h2>
+      <p class="mt-3 text-sm text-gray-600">
+        <span class="lang-en">In each example below, the <strong>first row</strong> is the real-robot reference video; the <strong>second row</strong> is the video to be evaluated.</span>
+        <span class="lang-zh">以下示例中，<strong>上一行</strong>为真机参考视频，<strong>下一行</strong>为待评估视频。</span>
+      </p>
+
+      <div class="mt-6 space-y-8">
+        <article class="rounded-xl border border-gray-100 bg-gray-50 p-5">
+          <h3 class="text-lg font-bold text-gray-900">
+            <span class="lang-en">3 points</span>
+            <span class="lang-zh">3 分</span>
+          </h3>
+          <p class="mt-2 text-gray-700">
+            <span class="lang-en">Action matches the reference; final object state matches; no obvious object deformation during the episode; physics and collisions look plausible.</span>
+            <span class="lang-zh">与参考视频动作一致，物体最终状态一致，过程中物体无明显形变，物理与碰撞无明显异常。</span>
+          </p>
+          <div class="mt-4 space-y-3">
+            <p class="text-sm font-semibold text-gray-800">
+              <span class="lang-en">Example (score 3)</span>
+              <span class="lang-zh">示例（3 分）</span>
+            </p>
+            <video class="w-full max-w-3xl rounded-xl border border-gray-200 bg-black" controls playsinline preload="metadata" src="../videos/sample1.mp4"></video>
+            <p class="text-sm text-gray-600">
+              <span class="lang-en">Reference: insert the ear into the box. The evaluated video also completes the insertion without noticeable deformation → <strong>3</strong>.</span>
+              <span class="lang-zh">参考：将耳朵插入盒子。待评视频同样完成插入且过程无明显形变 → <strong>3</strong> 分。</span>
+            </p>
+          </div>
+        </article>
+
+        <article class="rounded-xl border border-gray-100 bg-gray-50 p-5">
+          <h3 class="text-lg font-bold text-gray-900">
+            <span class="lang-en">2 points</span>
+            <span class="lang-zh">2 分</span>
+          </h3>
+          <p class="mt-2 text-gray-700">
+            <span class="lang-en">Final object state matches the reference, but there is visible deformation, unrealistic physics/collisions, or motion inconsistency during the trajectory.</span>
+            <span class="lang-zh">最终物体状态与参考一致，但过程中出现物体形变、物理或碰撞不真实，或与参考动作不一致。</span>
+          </p>
+          <div class="mt-4 space-y-6">
+            <div>
+              <p class="text-sm font-semibold text-gray-800">
+                <span class="lang-en">Example A (score 2)</span>
+                <span class="lang-zh">示例 A（2 分）</span>
+              </p>
+              <video class="mt-2 w-full max-w-3xl rounded-xl border border-gray-200 bg-black" controls playsinline preload="metadata" src="../videos/sample2.mp4"></video>
+              <p class="mt-2 text-sm text-gray-600">
+                <span class="lang-en">Reference: place the banana in the basket. The evaluated video ends with the banana in the basket (state OK), but the banana deforms during the process → <strong>2</strong>.</span>
+                <span class="lang-zh">参考：香蕉放入篮子。待评视频最终香蕉在篮中（状态一致），但过程中香蕉发生形变 → <strong>2</strong> 分。</span>
+              </p>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-gray-800">
+                <span class="lang-en">Example B (score 2)</span>
+                <span class="lang-zh">示例 B（2 分）</span>
+              </p>
+              <video class="mt-2 w-full max-w-3xl rounded-xl border border-gray-200 bg-black" controls playsinline preload="metadata" src="../videos/sample3.mp4"></video>
+              <p class="mt-2 text-sm text-gray-600">
+                <span class="lang-en">Reference: banana not placed in the basket. The evaluated video also ends with failure (consistent outcome), but objects deform or interact unnaturally → <strong>2</strong>.</span>
+                <span class="lang-zh">参考：香蕉未放入篮子。待评视频最终也未放入（状态一致），但过程中香蕉与其他物体发生形变 → <strong>2</strong> 分。</span>
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="rounded-xl border border-gray-100 bg-gray-50 p-5">
+          <h3 class="text-lg font-bold text-gray-900">
+            <span class="lang-en">1 point</span>
+            <span class="lang-zh">1 分</span>
+          </h3>
+          <p class="mt-2 text-gray-700">
+            <span class="lang-en">Robot motion is broadly aligned with the reference, but the final object state disagrees with the reference (such as success vs failure mismatch, object disappearance, etc.).</span>
+            <span class="lang-zh">机械臂整体动作与参考基本一致，但最终物体状态与参考不一致，如成功与失败状态不一致、物体消失等情形。</span>
+          </p>
+          <div class="mt-4 space-y-6">
+            <div>
+              <p class="text-sm font-semibold text-gray-800">
+                <span class="lang-en">Example A (score 1)</span>
+                <span class="lang-zh">示例 A（1 分）</span>
+              </p>
+              <video class="mt-2 w-full max-w-3xl rounded-xl border border-gray-200 bg-black" controls playsinline preload="metadata" src="../videos/sample4.mp4"></video>
+              <p class="mt-2 text-sm text-gray-600">
+                <span class="lang-en">Reference: banana not in the basket. The evaluated video ends with the banana in the basket (wrong outcome), while the arm motion still resembles the reference → <strong>1</strong>.</span>
+                <span class="lang-zh">参考：香蕉未在篮中。待评视频最终香蕉在篮中（状态不符），但整体动作与参考相近 → <strong>1</strong> 分。</span>
+              </p>
+            </div>
+            <div>
+              <p class="text-sm font-semibold text-gray-800">
+                <span class="lang-en">Example B (score 1)</span>
+                <span class="lang-zh">示例 B（1 分）</span>
+              </p>
+              <video class="mt-2 w-full max-w-3xl rounded-xl border border-gray-200 bg-black" controls playsinline preload="metadata" src="../videos/sample5.mp4"></video>
+              <p class="mt-2 text-sm text-gray-600">
+                <span class="lang-en">Reference: banana in the basket. The evaluated video shows grasping, but the banana disappears from the basket at the end (wrong state) while arm motion looks normal → <strong>1</strong>.</span>
+                <span class="lang-zh">参考：香蕉在篮中。待评视频虽有抓取，但最终香蕉在篮中消失（状态不符），机械臂动作大体正常 → <strong>1</strong> 分。</span>
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="rounded-xl border border-gray-100 bg-gray-50 p-5">
+          <h3 class="text-lg font-bold text-gray-900">
+            <span class="lang-en">0 points</span>
+            <span class="lang-zh">0 分</span>
+          </h3>
+          <p class="mt-2 text-gray-700">
+            <span class="lang-en">Action and object state both disagree with the reference. Other cases: severely chaotic visuals, incoherent arm motion vs reference, and inconsistent final state.</span>
+            <span class="lang-zh">动作与物体状态均与参考不一致；或画面混乱、机械臂动作与参考严重不符且最终状态也不一致等情形。</span>
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const displayForElement = (el) => {
+      const tag = (el?.tagName || '').toUpperCase();
+      if (tag === 'SPAN' || tag === 'A' || tag === 'B' || tag === 'STRONG' || tag === 'EM' || tag === 'I') return 'inline';
+      if (tag === 'LI') return 'list-item';
+      return 'block';
+    };
+
+    const setLang = (lang) => {
+      const zh = document.querySelectorAll('.lang-zh');
+      const en = document.querySelectorAll('.lang-en');
+      const showZh = lang === 'zh';
+      for (const el of zh) el.style.display = showZh ? displayForElement(el) : 'none';
+      for (const el of en) el.style.display = showZh ? 'none' : '';
+      const btnEn = document.getElementById('btn-en');
+      const btnZh = document.getElementById('btn-zh');
+      if (btnEn && btnZh) {
+        if (showZh) {
+          btnZh.className = 'rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-gray-900 text-white';
+          btnEn.className = 'rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-white text-gray-700 hover:bg-gray-50';
+        } else {
+          btnEn.className = 'rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-gray-900 text-white';
+          btnZh.className = 'rounded-full px-3 py-1.5 text-sm font-semibold ring-1 ring-inset ring-gray-200 bg-white text-gray-700 hover:bg-gray-50';
+        }
+      }
+      try { localStorage.setItem('gb_lang', lang); } catch {}
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = (() => { try { return localStorage.getItem('gb_lang'); } catch { return null; } })();
+      setLang(saved === 'zh' ? 'zh' : 'en');
+      document.getElementById('btn-en')?.addEventListener('click', () => setLang('en'));
+      document.getElementById('btn-zh')?.addEventListener('click', () => setLang('zh'));
+    });
+  </script>
+</body>
+</html>
