@@ -123,15 +123,15 @@
         </div>
         <div>
           <h2 class="text-lg font-bold text-amber-900">
-            <span class="lang-en">Notice: Table30 for CVPR Dataset & Leaderboard Under Construction</span>
-            <span class="lang-zh">重要通知：Table30 for CVPR 数据集与榜单筹备中</span>
+            <span class="lang-en">Notice: Table30 for CVPR Dataset Released</span>
+            <span class="lang-zh">重要通知：Table30 for CVPR 数据集已发布</span>
           </h2>
           <div class="mt-2 text-amber-800 leading-relaxed space-y-2 text-sm">
             <p class="lang-en">
-              The Table30 for CVPR dataset and the dedicated track leaderboard are currently under preparation and will be released soon. In the meantime, participating teams can proceed with account registration, environment setup, and local Mock offline testing.
+              The Table30 for CVPR dataset has been officially released. You can download it from <a href="https://huggingface.co/datasets/RoboChallenge/Table30v2" target="_blank" rel="noopener noreferrer" class="font-semibold underline hover:text-amber-600">Hugging Face</a>. The dedicated track leaderboard will be available at <a href="https://robochallenge.cn/competition" target="_blank" rel="noopener noreferrer" class="font-semibold underline hover:text-amber-600">robochallenge.cn/competition</a> and will be updated soon.
             </p>
             <p class="lang-zh">
-              Table30 for CVPR 数据集以及专属赛道榜单目前正在进行准备，即将发布。在此期间，参赛队伍可以先行完成账号注册、环境搭建以及本地 Mock 离线测试。
+              Table30 for CVPR 数据集已正式发布，可从 <a href="https://huggingface.co/datasets/RoboChallenge/Table30v2" target="_blank" rel="noopener noreferrer" class="font-semibold underline hover:text-amber-600">Hugging Face</a> 下载。专属赛道榜单地址为 <a href="https://robochallenge.cn/competition" target="_blank" rel="noopener noreferrer" class="font-semibold underline hover:text-amber-600">robochallenge.cn/competition</a>，即将更新。
             </p>
           </div>
         </div>
@@ -215,15 +215,20 @@ Phone Number:
                     <span class="lang-en">1. Clone Repository:</span>
                     <span class="lang-zh">1. 克隆仓库：</span>
                 </div>
-                <code class="block bg-gray-900 text-gray-100 p-3 rounded-lg text-sm">git clone https://github.com/RoboChallenge/RoboChallengeInference.git <br> pip install -r requirements.txt</code>
+                <code class="block bg-gray-900 text-gray-100 p-3 rounded-lg text-sm">
+                  git clone https://github.com/RoboChallenge/RoboChallengeInference.git <br>
+                  cd RoboChallengeInference <br>
+                  git checkout cvpr <br>
+                  <br> pip install -r requirements.txt
+                </code>
                 
                 <div class="font-semibold text-gray-900">
                     <span class="lang-en">2. Start Mock Server:</span>
                     <span class="lang-zh">2. 启动本地 Mock 服务：</span>
                 </div>
                 <p class="text-sm">
-                    <span class="lang-en">Edit <code>mock_settings.py</code> to configure your target robot tag (e.g., 'aloha', 'arx5', 'ur5', 'franka'). Then run:</span>
-                    <span class="lang-zh">编辑 <code>mock_settings.py</code> 设置目标机器人（如 'aloha', 'arx5', 'ur5', 'franka'）。随后运行：</span>
+                    <span class="lang-en">Edit <code>mock_settings.py</code> to configure your target robot tag (e.g., 'aloha', 'arx5', 'ur5', 'w1'). Then run:</span>
+                    <span class="lang-zh">编辑 <code>mock_settings.py</code> 设置目标机器人（如 'aloha', 'arx5', 'ur5', 'w1'）。随后运行：</span>
                 </p>
                 <code class="block bg-gray-900 text-gray-100 p-3 rounded-lg text-sm">python3 mock_robot_server.py</code>
 
@@ -248,15 +253,15 @@ Phone Number:
             <ul class="list-disc pl-5 space-y-2">
                 <li class="lang-en">Submit your test request via the RoboChallenge platform.</li>
                 <li class="lang-en">The real-robot testing time will be based on your scheduled appointment, and our operations staff will communicate with you in advance.</li>
-                <li class="lang-en">After submission, get your Run ID. Prepare your model and code before the scheduled slot.</li>
+                <li class="lang-en">After submission, get your SubmissionId. Prepare your model and code before the scheduled slot.</li>
                 <li class="lang-en">During your slot, use the API to get current machine info and run the formal script locally to interact with the physical device and submit trajectories:</li>
                 
                 <li class="lang-zh">通过 RoboChallenge 平台提交测试请求。</li>
                 <li class="lang-zh">真机测试时间将以预约的时间为准，同时也会有运营人员提前进行沟通。</li>
-                <li class="lang-zh">提交后获取你的 Run ID。你需要在测试开始前准备好你的模型和程序。</li>
+                <li class="lang-zh">提交后获取你的 SubmissionId。你需要在测试开始前准备好你的模型和程序。</li>
                 <li class="lang-zh">在指定时间段内，通过 API 获取当前机器信息，并在本地运行正式推理脚本，程序将与真实物理设备交互并提交动作轨迹：</li>
             </ul>
-            <code class="block bg-gray-900 text-gray-100 p-3 rounded-lg text-sm">python3 demo.py --user_token {Your Token} --run_id {Your Run ID} --checkpoint {Model Path}</code>
+            <code class="block bg-gray-900 text-gray-100 p-3 rounded-lg text-sm">python3 demo.py --user_token {your_user_token} --submission_id {your_submission_id} --checkpoint {your_checkpoint}</code>
           </div>
 
           <div class="mt-6 rounded-2xl border border-gray-100 bg-gradient-to-br from-white via-white to-amber-50 p-5">
